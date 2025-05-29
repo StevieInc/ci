@@ -20,7 +20,7 @@ pipeline {
           // Логин в реестр
           docker.withRegistry(REGISTRY_URL, CREDS_ID) {
             // Сборка образа
-            docker.build("${IMAGE_NAME}:groovy")
+            app = docker.build("hack3rru/demo-tms:groovy")
           }
         }
       }
@@ -31,7 +31,7 @@ pipeline {
         script {
           docker.withRegistry(REGISTRY_URL, CREDS_ID) {
             // Пушим оба тега: по номеру билда и latest
-            docker.image("${IMAGE_NAME}:${env.BUILD_NUMBER}").push()
+            app.push("${env.BUILD_NUMBER}")
           }
         }
       }
