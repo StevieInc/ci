@@ -2,7 +2,7 @@ pipeline {
   agent { label 'docker' }
 
   environment {
-    REGISTRY_URL = ''
+    REGISTRY_URL = 'https://registry.hub.docker.com'
     IMAGE_NAME   = "${REGISTRY_URL}/hack3rru/demo-tms"
     CREDS_ID     = '1'
   }
